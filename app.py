@@ -21,7 +21,7 @@ st.write("Please answer all questions below. Your sleep condition will be predic
 if os.path.exists("sleep_model.pkl"):
     saved = joblib.load("sleep_model.pkl")
     model = saved["model"]
-    imputer = saved["imputer"]
+   
     features = saved["features"]
 
     st.sidebar.success("✅ Model Loaded")
@@ -104,7 +104,7 @@ if os.path.exists("sleep_model.pkl"):
                             sleeptime, screentime, awakeningn, noise]],
                           columns=features)
 
-        df_clean = imputer.transform(df)
+       
         prediction = model.predict(df_clean)[0]
 
         st.divider()
@@ -131,3 +131,4 @@ if os.path.exists("sleep_model.pkl"):
 
 else:
     st.error("❌ sleep_model.pkl NOT FOUND")
+
